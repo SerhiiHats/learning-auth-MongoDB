@@ -13,7 +13,7 @@ app.use("/auth", router);            // указываем приложению 
 
 const start = async () => {
   try {
-    if(!process.env.MONGO_DB_PASSWORD){
+    if (!process.env.MONGO_DB_PASSWORD) {
       throw new Error("You forgot to set MONGO_DB_PASSWORD")
     }
     await mongoose.connect(`mongodb+srv://gatsserv:${process.env.MONGO_DB_PASSWORD}@cluster0.lafhw4q.mongodb.net/?retryWrites=true&w=majority`)   // подключаемся к базе данных
