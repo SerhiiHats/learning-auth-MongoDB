@@ -1,6 +1,5 @@
 import User from "./models/User.js";
 import Role from "./models/Role.js";
-import role from "./models/Role.js";
 import bcrypt from "bcryptjs";
 // const bcrypt = require('bcryptjs');
 
