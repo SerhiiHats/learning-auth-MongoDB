@@ -31,6 +31,16 @@ class AuthController {
 
   async login(req, res) {
     try {
+      const {userName, password} = req.body;
+      const user = await User.findOne({userName});
+      if (!user){
+        return res.status(400).json({message: `User with username: ${userName} not found`});
+      }
+      const validPassword = bcrypt.compareSync(password, user.password);                          //сравниваем пароли у пользователя и у того что в базе данных
+      if (!validPassword){
+        return res.status(400).json({message: `Enter wrong password`});
+      }
+
 
     } catch (e) {
       // throw new Error("Помилка    логіну")
