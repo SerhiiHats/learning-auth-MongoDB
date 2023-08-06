@@ -10,7 +10,7 @@ const generateAccessToken = (id, roles) => {
     id,
     roles
   }
-  return jwt.sign(payload, process.env.SECRET, {expiresIn: "24h"});           // в пунирируем ключ в обьект опций добавляем время жизни ключа
+  return jwt.sign(payload, process.env.SECRET, {expiresIn: "24h"});           // генирируем токен методом sign: по payload генирируется ключ в зависимосты от второго параметра SECRET, в обьект опций добавляем время жизни ключа
 }
 
 class AuthController {
@@ -65,8 +65,10 @@ class AuthController {
       // await userRole.save();
       // await adminRole.save();                       //код для создания Ролей в базе данных, после создания этот код можно удалить
 
+      const user = await User.find();
+      res.status(200).json(user);
 
-      res.json("server worked!!!!!")
+      // res.json("server worked!!!!!")
     } catch (e) {
       throw new Error("Помилка отримання користувача")
     }
